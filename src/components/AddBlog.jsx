@@ -40,22 +40,22 @@ const AddBlog = () => {
     }
   }
   return(
-    <div>
+    <div className='main-blogs'>
       <h2>Blog Page</h2>
       <form onSubmit={blogSubmitData}>
-        <div>
+        <div className='blog-item-inner'>
           <input type="text" value={title} onChange={(e)=>setTitle(e.target.value)} required placeholder='Title' />
         </div>
-        <div>
+          <div className='blog-item-inner'>
           <textarea value={decription} name={decription}  onChange={(e)=>setDecription(e.target.value)} required  placeholder='Decription'/>
         </div>
-        <div>
+          <div className='blog-item-inner'>
           <input type="text" value={auther} name={auther} onChange={(e)=>setAuther(e.target.value)} required placeholder='Auther'/>
         </div>
-        <div>
+          <div className='blog-item-inner'>
           <input type="file" onChange={handleImageChange} accept="image/*"  placeholder='Image'/>
         </div>
-        <button type="submit">Create Blog</button>
+        <button type="submit">Add Blog</button>
       </form>
       {successMessage && <p>{successMessage}</p>}
     </div>);

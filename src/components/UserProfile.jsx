@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../assets/dashbord.css";
-
 const UserProfile = () => {
   const [user, setUser] = useState(null);
   const [formData, setFormData] = useState({ name: "", email: "", role: "" });
@@ -29,6 +28,7 @@ const UserProfile = () => {
         const profileData = res.data;
 
         // Map backend 'verified' to frontend 'isVerified'
+
         setUser({
           ...profileData,
           isVerified: profileData.verified,
@@ -44,7 +44,7 @@ const UserProfile = () => {
           setPreviewUrl(`http://localhost:8002/${profileData.profile}`);
         }
       } catch (error) {
-        console.error("❌ Error fetching user profile:", error.response?.data || error.message);
+        console.error("Error fetching user profile:", error.response?.data || error.message);
       }
     };
 
@@ -57,7 +57,7 @@ const UserProfile = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle file selection
+// Handle file selection
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -84,7 +84,6 @@ const UserProfile = () => {
       });
 
       if (res.data.success) {
-        // Map 'verified' to 'isVerified'
         setUser({
           ...res.data.user,
           isVerified: res.data.user.verified,
@@ -103,13 +102,14 @@ const UserProfile = () => {
         setIsEditing(false);
       }
     } catch (error) {
-      console.error("❌ Error updating profile:", error.response?.data || error.message);
+      console.error("Error updating profile:", error.response?.data || error.message);
     }
   };
 
   if (!user) return <p>Loading user data...</p>;
 
   return (
+
     <div className="profile-container">
       <div className="profile-header">
         <h2>User Profile</h2>
@@ -119,7 +119,6 @@ const UserProfile = () => {
       </div>
 
       <div className="profile-content">
-        {/* Profile Image */}
         <div className="profile-image-section">
           <div className="profile-image-container">
             <img
@@ -140,7 +139,6 @@ const UserProfile = () => {
           </div>
         </div>
 
-        {/* Profile Fields */}
         <div className="profile-details">
           <div className="profile-field">
             <label>Name:</label>
@@ -190,7 +188,6 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
-
       <div className="profile-actions">
         {!isEditing ? (
           <button onClick={() => setIsEditing(true)} className="edit-button">

@@ -16,11 +16,11 @@ import AboutUs from '../components/About';
 import BlogDetails from '../components/blogDetails';
 import UserProfile from '../components/UserProfile';
 import MyCalendar from '../components/Calendar';
-
+// import Sidebar from '../components/Sidebar';
 
 const NavLayout = () => {
   const location = useLocation();
-  const isDashboardRoute = location.pathname.startsWith('/admin/dashbord');
+  const isDashboardRoute = location.pathname.startsWith('/admin/dashboard');
   return (
     <>
     {!isDashboardRoute && <Nav />}
@@ -29,7 +29,7 @@ const NavLayout = () => {
 }
 const FooterLayout = () => {
   const location = useLocation();
-  const isDashboardRoute = location.pathname.startsWith('/admin/dashbord');
+ const isDashboardRoute = location.pathname.startsWith('/admin/dashboard');
   return(
     <>
     {!isDashboardRoute && <Footer />}
@@ -42,7 +42,7 @@ const Router = () =>{
       <NavLayout />
       <Routes>
         <Route path="/" element={ <ProtectedRoute> <Home/></ProtectedRoute>}/>
-          <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile" element={<UserProfile />} />
         <Route path="/calendar" element={<MyCalendar />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/about" element={<ProtectedRoute><AboutUs/></ProtectedRoute>}/>

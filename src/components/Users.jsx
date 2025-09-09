@@ -92,7 +92,7 @@ const Users = () => {
             });
 
             const result = await response.json();
-
+            
             if (response.ok) {
                 setUsers(prev =>
                     prev.map(u =>
@@ -165,7 +165,6 @@ const Users = () => {
                     </tbody>
                 </table>
             </div>
-
             {/* Edit Modal */}
             {isEditing && (
                 <div className="modal-overlay">
@@ -179,6 +178,7 @@ const Users = () => {
                                     value={editData.name}
                                     onChange={(e) => setEditData({ ...editData, name: e.target.value })}
                                     required
+                                    placeholder="Enter name"
                                 />
                             </label>
                             <label>
@@ -188,6 +188,7 @@ const Users = () => {
                                     value={editData.email}
                                     onChange={(e) => setEditData({ ...editData, email: e.target.value })}
                                     required
+                                    placeholder="Email"
                                 />
                             </label>
                             <label>
